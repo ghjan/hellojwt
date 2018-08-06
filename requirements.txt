@@ -1,0 +1,3 @@
+django~=1.11                   # Django 1.11 is designated as a long-term support release
+djangorestframework
+djangorestframework-jwt
