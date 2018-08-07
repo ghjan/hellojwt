@@ -8,17 +8,21 @@ User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    date_joined = serializers.ReadOnlyField()
-
-    # 重写create方法
-    def create(self, validated_data):
-        user = super(UserSerializer, self).create(validated_data=validated_data)
-        user.set_password(validated_data["password"])
-        user.save()
-        return user
-
-    class Meta(object):
+    class Meta:
         model = User
-        fields = ('id', 'email', 'first_name', 'last_name',
-                  'date_joined', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+
+# class UserSerializer(serializers.ModelSerializer):
+#     date_joined = serializers.ReadOnlyField()
+#
+#     # 重写create方法
+#     def create(self, validated_data):
+#         user = super(UserSerializer, self).create(validated_data=validated_data)
+#         user.set_password(validated_data["password"])
+#         user.save()
+#         return user
+#
+#     class Meta(object):
+#         model = User
+#         fields = ('id', 'email', 'first_name', 'last_name',
+#                   'date_joined', 'password')
+#         extra_kwargs = {'password': {'write_only': True}}
